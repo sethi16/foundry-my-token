@@ -14,6 +14,7 @@ contract DeployOurToken is Script {
         vm.stopBroadcast();
         return token;
     }
-    
+    // Always remember, when we deploy our contract functions runs automatically by fundry
+    // Only, when I deploy via forge not by some contract in that case need to call the function manually
 }
 

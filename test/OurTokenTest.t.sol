@@ -32,12 +32,18 @@ contract OurTokenTest is Test{
         vm.prank(bob);
         token.approve(alice,transferAmount);  
         assertEq(token.allowance(bob,alice),transferAmount);  
+        //need to call user every time to change the state of the contract
+        // Here, I gave approval to alice to transfer mentioned tokens from bob's account
+        // Means, if alice wants to transfer tokens from bob's account, she can transfer only 20 ether tokens
+        // Doesn't mean alice get 20 ether tokens, means she gets but not now
         
         vm.prank(alice);
         token.transferFrom(bob , alice , transferAmount);
+        // Here, I am not giving approval just transferring tokens from bob to alice
 
         vm.prank(alice);
         token.transfer(bob, balance);
         assertEq(token.balanceOf(bob) + token.balanceOf(alice), AccountBalance);
+        // Here, alice is transferring 2 ether tokens to bob
         }
 }
