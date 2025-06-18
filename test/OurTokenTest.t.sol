@@ -30,8 +30,9 @@ contract OurTokenTest is Test{
     }
     function testAllowanceWork() public{
         vm.prank(bob);
-        token.approve(alice,transferAmount);  
+        MyLovelyToken.approve(alice,transferAmount);  
         assertEq(token.allowance(bob,alice),transferAmount);  
+        // Here, MyLovelyToken is the token that I made in the src file, in testing user not need to mint it !
         //need to call user every time to change the state of the contract
         // Here, I gave approval to alice to transfer mentioned tokens from bob's account
         // Means, if alice wants to transfer tokens from bob's account, she can transfer only 20 ether tokens
